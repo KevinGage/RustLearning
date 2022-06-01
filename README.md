@@ -2,6 +2,10 @@
 
 ## Common Commands
 
+### Update rust. They release every 6 weeks
+
+`rustup update`
+
 ### Create new project
 
 `cargo new {project name}`
