@@ -6,6 +6,10 @@
 
 `rustup update`
 
+### Update cargo crates (packages)
+
+`cargo update`
+
 ### Create new project
 
 `cargo new {project name}`
