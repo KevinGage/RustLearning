@@ -26,7 +26,7 @@ fn main() {
 
     let mut num1: u128 = 0;
     let mut num2: u128 = 1;
-    let mut num3: u128 = 0;
+    let mut num3: u128 = 1;
 
     for _number in 0..fib_count {
         num3 = num1 + num2;
