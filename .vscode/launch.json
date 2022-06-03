@@ -61,5 +61,24 @@
       "args": [],
       "cwd": "${workspaceRoot}"
     }
+    {
+      "name": "(Windows) Med Mode",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceRoot}/med_mode/target/debug/med_mode.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceRoot}",
+      "environment": [],
+      "externalConsole": true
+    },
+    {
+      "name": "(Linux, OSX) Med Mode",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceRoot}/med_mode/target/debug/med_mode",
+      "args": [],
+      "cwd": "${workspaceRoot}"
+    }
   ]
 }
