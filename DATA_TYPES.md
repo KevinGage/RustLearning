@@ -37,24 +37,75 @@ fixed length collection of similar types
 a collection on labaled values (object)
 can implement (impl) methods and functions
 
-`struct User { active: bool, username: String, email: String, sign_in_count: u64, }`
+```
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+```
 
 create an instance
-`let user1 = User { email: String::from("someone@example.com"), username: String::from("someusername123"), active: true, sign_in_count: 1, }; `
+
+```
+let user1 = User {
+    email: String::from("someone@example.com"),
+    username: String::from("someusername123"),
+    active: true,
+    sign_in_count: 1,
+};
+```
 
 add a method
-`impl User { fn name_plus_email(&self) -> String { self.username + self.email } }`
+
+```
+impl User {
+    fn name_plus_email(&self) -> String {
+        self.username + self.email
+    }
+}
+```
 
 add an associate function
-`impl User { fn new(name: String) -> User { User { active: true, username: name, email: "default", sign_in_count: 0 } } }`
+
+```
+impl User {
+    fn new(name: String) -> User {
+        User {
+            active: true,
+            username: name,
+            email: "default",
+            sign_in_count: 0
+        }
+    }
+}
+```
 
 ### Enum
 
 a collection of types
 useful for match
-`enum Coin { Penny, Nickel, Dime, Quarter, } `
 
-`fn value_in_cents(coin: Coin) -> u8 { match coin { Coin::Penny => 1, Coin::Nickel => 5, Coin::Dime => 10, Coin::Quarter => 25, } }`
+```
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+```
+
+```
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+```
 
 ### Vector
 
