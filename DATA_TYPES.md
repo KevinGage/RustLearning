@@ -30,6 +30,25 @@ fixed length collection of multiple types
 fixed length collection of similar types
 `let a: [i32; 5] = [1, 2, 3, 4, 5];`
 
+### Slice
+
+[reference](https://doc.rust-lang.org/book/ch04-03-slices.html)
+
+Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.
+A slice is a kind of reference, so it does not have ownership.
+
+Reference part of a string
+
+```
+let s = String::from("hello world");
+
+let hello = &s[0..5];
+let world = &s[6..11];
+```
+
+String literals are actually slices
+`let s = "Im a slice"`
+
 ## Complex Types
 
 ### Struct
