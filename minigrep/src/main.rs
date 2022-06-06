@@ -10,14 +10,14 @@ fn main() {
 
     // Save command line arguments
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {}", err);
+        eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
     // Start the program logic
     // If an error is returning print it and exit with non 0 code
     if let Err(e) = minigrep::run(config) {
-        println!("Application error: {}", e);
+        eprintln!("Application error: {}", e);
 
         process::exit(1);
     }
