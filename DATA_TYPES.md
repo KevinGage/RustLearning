@@ -141,3 +141,4 @@ a collection of key/value pairs that can grow/shrink
 `let mut scores: HashMap<&str, u32> = HashMap::new();`
 
 `scores.insert(String::from("Blue"), 10);`
+`let score = scores.get(&team_name);`
