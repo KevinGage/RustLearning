@@ -5,11 +5,8 @@ use minigrep::Config;
 
 // Main function should just have logic related to reading config and starting the program
 fn main() {
-    // Read command line arguments into a vector
-    let args: Vec<String> = env::args().collect();
-
-    // Save command line arguments
-    let config = Config::new(&args).unwrap_or_else(|err| {
+    // Create a new config object by passing in an iterator returned by env::args()
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
