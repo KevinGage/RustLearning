@@ -2,9 +2,14 @@ use std::fs;
 use std::io::prelude::*;
 use std::net::TcpListener;
 use std::net::TcpStream;
+use std::thread;
+use std::time::Duration;
+use tutorial_web_server::ThreadPool;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    // Max of 4 threads so system can't be DOSed
+    let pool = ThreadPool::new(4);
 
     // For each connection attempt to listener
     for stream in listener.incoming() {
@@ -12,8 +17,9 @@ fn main() {
 
         println!("Connection established!");
 
-        handle_connection(stream);
-
+        pool.execute(|| {
+            handle_connection(stream);
+        });
         // Connection is closed because it goes out of scope
     }
 }
@@ -26,9 +32,14 @@ fn handle_connection(mut stream: TcpStream) {
     println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
 
     let get = b"GET / HTTP/1.1\r\n";
+    let sleep = b"GET /sleep HTTP/1.1\r\n";
 
-    // If GET request for /
     let (status_line, filename) = if buffer.starts_with(get) {
+        // If GET request for /
+        ("HTTP/1.1 200 OK", "hello.html")
+    } else if buffer.starts_with(sleep) {
+        // If GET request for /sleep simulate work
+        thread::sleep(Duration::from_secs(5));
         ("HTTP/1.1 200 OK", "hello.html")
     } else {
         ("HTTP/1.1 404 NOT FOUND", "404.html")
