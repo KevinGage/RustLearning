@@ -23,7 +23,7 @@ fn main() {
 
 ## Rc<T>
 
-To enable multiple ownership
+To enable multiple ownership. Note Arc<T> is the thread safe version of Rc<T>
 
 ```
 enum List {
@@ -45,6 +45,7 @@ fn main() {
 
 Enforces borrowing rules at runtime instead of compile time.
 you can mutate the value inside the RefCell<T> even when the RefCell<T> is immutable.
+Note Mutex<T> is similar but thread safe
 
 ```
 #[derive(Debug)]
